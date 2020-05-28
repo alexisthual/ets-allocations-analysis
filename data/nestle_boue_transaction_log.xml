@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export>
+      <AllocationOperatorHistoryCriteria>
+            <AllocationTableOperatorAllocation>
+                  <InstallationOrOperatorID>2</InstallationOrOperatorID>
+                  <NationalAdministrator>France </NationalAdministrator>
+                  <ETSPhase>Phase 3 2013-2020</ETSPhase>
+            </AllocationTableOperatorAllocation>
+      </AllocationOperatorHistoryCriteria>
+      <AllocationOperatorHistory>
+            <AllocationTableOperatorAllocation>
+                  <Source>NAPt/NAT Change</Source>
+                  <Action>Update of an Installation/Operator Allocation</Action>
+                  <DateTime>2015-04-28 16:46:32</DateTime>
+                  <allocation2013>18618</allocation2013>
+                  <allocation2014>16661</allocation2014>
+                  <allocation2015>22459</allocation2015>
+                  <allocation2016>22046</allocation2016>
+                  <allocation2017>21628</allocation2017>
+                  <allocation2018>21206</allocation2018>
+                  <allocation2019>20779</allocation2019>
+                  <allocation2020>20351</allocation2020>
+            </AllocationTableOperatorAllocation>
+            <AllocationTableOperatorAllocation>
+                  <Source>NAPt/NAT Change</Source>
+                  <Action>Update of an Installation/Operator Allocation</Action>
+                  <DateTime>2014-01-27 16:53:59</DateTime>
+                  <allocation2013>18618</allocation2013>
+                  <allocation2014>16661</allocation2014>
+                  <allocation2015>14758</allocation2015>
+                  <allocation2016>12912</allocation2016>
+                  <allocation2017>11123</allocation2017>
+                  <allocation2018>9392</allocation2018>
+                  <allocation2019>7717</allocation2019>
+                  <allocation2020>6105</allocation2020>
+            </AllocationTableOperatorAllocation>
+      </AllocationOperatorHistory>
+</export>

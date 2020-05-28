@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<InstallationInformationPublic>
+      <Installation>
+            <PermitOrPlanDate>1988-08-23</PermitOrPlanDate>
+            <NationalAdministratorCode>FR</NationalAdministratorCode>
+            <MainActivityTypeCodeLookup>Combustion of fuels</MainActivityTypeCodeLookup>
+            <InstallationOrAircraftOperatorID>2</InstallationOrAircraftOperatorID>
+            <MainActivityTypeCode>20</MainActivityTypeCode>
+            <Address1>14 Rue des Fabriques</Address1>
+            <Address2>BP 1</Address2>
+            <PermitOrPlanID>05100097</PermitOrPlanID>
+            <City>Boué</City>
+            <ParentCompany>NESTLE FRANCE SAS</ParentCompany>
+            <Latitude>6.99028767</Latitude>
+            <Longitude>25.60563716</Longitude>
+            <ZipCode>02450</ZipCode>
+            <InstallationNameOrAircraftOperatorCode>NESTLE FRANCE - Boué</InstallationNameOrAircraftOperatorCode>
+            <Account>
+                  <AccountHolderName>NESTLE FRANCE SAS</AccountHolderName>
+                  <InstallationOrAircraftOperatorID>2</InstallationOrAircraftOperatorID>
+                  <NationalAdministratorCode>FR</NationalAdministratorCode>
+                  <AccountTypeCode>100</AccountTypeCode>
+                  <AccountTypeCodeLookup>Holding Account</AccountTypeCodeLookup>
+                  <NationalAdministrator>France </NationalAdministrator>
+                  <AccountStatus>open</AccountStatus>
+                  <RelatedPerson>
+                        <CompanyRegistrationNo>542014428</CompanyRegistrationNo>
+                        <Name>NESTLE FRANCE SAS</Name>
+                  </RelatedPerson>
+                  <RelatedPerson>
+                        <CountryCode>FR</CountryCode>
+                        <Address1>7 Boulevard Pierre Carle</Address1>
+                        <Address2>NOISIEL</Address2>
+                        <City>Marne la Vallée Cedex 2</City>
+                        <RelationshipTypeCode>1</RelationshipTypeCode>
+                        <ZipCode>77186</ZipCode>
+                        <RelationshipTypeCodeLookup>Account holder</RelationshipTypeCodeLookup>
+                        <CountryCodeLookup>France </CountryCodeLookup>
+                        <Name>NESTLE FRANCE SAS</Name>
+                  </RelatedPerson>
+            </Account>
+      </Installation>
+</InstallationInformationPublic>

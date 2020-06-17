@@ -172,8 +172,6 @@ if __name__ == '__main__':
     if t is not main_thread:
       t.join()
 
-  print('\nSuccessful requests: {} / {} ({}%)'.format(len(successfulRequests), MAX - MIN, round(len(successfulRequests) / (MAX - MIN)) * 100))
-
   # Write files
   files = [
     ('account_holders', accountHolders, accountHoldersHeaders),

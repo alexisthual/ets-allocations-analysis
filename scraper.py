@@ -41,110 +41,109 @@ complianceHistoryHeaders = [
 ]
 
 def searchPages(i, j):
-  with requests.Session() as s:
-    for accountID in tqdm(range(i, j)):
-      try:
-        response = requests.get(url=url.format(str(accountID)))
-      except requests.exceptions.RequestException as e:
-        logging.error('accountID [{}]: {}'.format(accountID, e))
-        pass
+  for accountID in tqdm(range(i, j)):
+    try:
+      response = requests.get(url=url.format(str(accountID)))
+    except requests.exceptions.RequestException as e:
+      logging.error('accountID [{}]: {}'.format(accountID, e))
+      pass
 
-      soup = BeautifulSoup(response.text, 'html.parser')
+    soup = BeautifulSoup(response.text, 'html.parser')
 
-      # Account holder information
-      installationID = None
-      nationalAdministrator = None
-      accountType = None
-      accountHolderName = None
+    # Account holder information
+    installationID = None
+    nationalAdministrator = None
+    accountType = None
+    accountHolderName = None
 
-      try:
-        accountHolderInformation = soup \
-          .find('table', id='tblAccountGeneralInfo') \
-          .findAll('tr', recursive=False)[2] \
-          .findAll('td')
-        
-        nationalAdministrator = accountHolderInformation[0].find('span').text.strip()
-        accountType = accountHolderInformation[1].find('span').text.strip()
-        accountHolderName = accountHolderInformation[2].find('span').text.strip()
-        installationID = accountHolderInformation[3].find('span').text.strip()
+    try:
+      accountHolderInformation = soup \
+        .find('table', id='tblAccountGeneralInfo') \
+        .findAll('tr', recursive=False)[2] \
+        .findAll('td')
+      
+      nationalAdministrator = accountHolderInformation[0].find('span').text.strip()
+      accountType = accountHolderInformation[1].find('span').text.strip()
+      accountHolderName = accountHolderInformation[2].find('span').text.strip()
+      installationID = accountHolderInformation[3].find('span').text.strip()
 
-        accountHolders.append([
+      accountHolders.append([
+        accountID,
+        installationID,
+        nationalAdministrator,
+        accountType,
+        accountHolderName
+      ])
+    except:
+      pass
+
+    # Installation information
+    installationID = None
+    installationName = None
+    mainActivity = None
+
+    try:
+      installationInformation = soup \
+        .find('table', id='tblChildDetails')
+      
+      installationID = installationInformation \
+        .findAll('table')[0] \
+        .findAll('tr', recursive=False)[2] \
+        .findAll('td')[0] \
+        .find('span').text.strip()
+      installationName = installationInformation \
+        .findAll('table')[0] \
+        .findAll('tr', recursive=False)[2] \
+        .findAll('td')[1] \
+        .find('span').text.strip()
+      mainActivity = installationInformation \
+        .findAll('table')[1] \
+        .findAll('tr', recursive=False)[2] \
+        .findAll('td')[7] \
+        .find('span').text.strip()
+      
+      installations.append([
+        accountID,
+        installationID,
+        installationName,
+        mainActivity
+      ])
+    except:
+      pass
+
+    # Compliance information
+    year = None
+    allowancesInAllocation = None
+    verifiedEmissions = None
+    unitsSurrendered = None
+    complianceCode = None
+
+    try:
+      complianceHistoryRows = soup \
+        .findAll('table', id='tblChildDetails')[1] \
+        .find('table') \
+        .findAll('tr', recursive=False)
+
+      for row in complianceHistoryRows[2:]:
+        information = row.findAll('td')
+
+        year = information[1].find('span').text.strip()
+        allowancesInAllocation = information[2].find('span').text.strip()
+        verifiedEmissions = information[3].find('span').text.strip()
+        unitsSurrendered = information[4].find('span').text.strip()
+        complianceCode = information[7].find('span').text.strip()
+
+        complianceHistory.append([
           accountID,
           installationID,
-          nationalAdministrator,
-          accountType,
-          accountHolderName
+          year,
+          allowancesInAllocation,
+          verifiedEmissions,
+          unitsSurrendered,
+          complianceCode
         ])
-      except:
-        pass
-
-      # Installation information
-      installationID = None
-      installationName = None
-      mainActivity = None
-
-      try:
-        installationInformation = soup \
-          .find('table', id='tblChildDetails')
-        
-        installationID = installationInformation \
-          .findAll('table')[0] \
-          .findAll('tr', recursive=False)[2] \
-          .findAll('td')[0] \
-          .find('span').text.strip()
-        installationName = installationInformation \
-          .findAll('table')[0] \
-          .findAll('tr', recursive=False)[2] \
-          .findAll('td')[1] \
-          .find('span').text.strip()
-        mainActivity = installationInformation \
-          .findAll('table')[1] \
-          .findAll('tr', recursive=False)[2] \
-          .findAll('td')[7] \
-          .find('span').text.strip()
-        
-        installations.append([
-          accountID,
-          installationID,
-          installationName,
-          mainActivity
-        ])
-      except:
-        pass
-
-      # Compliance information
-      year = None
-      allowancesInAllocation = None
-      verifiedEmissions = None
-      unitsSurrendered = None
-      complianceCode = None
-
-      try:
-        complianceHistoryRows = soup \
-          .findAll('table', id='tblChildDetails')[1] \
-          .find('table') \
-          .findAll('tr', recursive=False)
-
-        for row in complianceHistoryRows[2:]:
-          information = row.findAll('td')
-
-          year = information[1].find('span').text.strip()
-          allowancesInAllocation = information[2].find('span').text.strip()
-          verifiedEmissions = information[3].find('span').text.strip()
-          unitsSurrendered = information[4].find('span').text.strip()
-          complianceCode = information[7].find('span').text.strip()
-
-          complianceHistory.append([
-            accountID,
-            installationID,
-            year,
-            allowancesInAllocation,
-            verifiedEmissions,
-            unitsSurrendered,
-            complianceCode
-          ])
-      except:
-        pass
+    except:
+      pass
 
 # %%
 if __name__ == '__main__':
